@@ -10,8 +10,10 @@ export const ChatMessage = ({ content, type }: ChatMessageProps) => {
   return (
     <div
       className={cn(
-        "message-bubble",
-        type === "assistant" ? "assistant" : "user"
+        "max-w-[80%] p-4 rounded-xl",
+        type === "assistant"
+          ? "bg-gray-100 self-start"
+          : "bg-red-600 text-white self-end"
       )}
     >
       {content}
