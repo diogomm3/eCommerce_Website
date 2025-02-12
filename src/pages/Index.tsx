@@ -1,11 +1,58 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useState } from "react";
+import { ChatMessage } from "@/components/ChatMessage";
+import { ChatInput } from "@/components/ChatInput";
+import { ImageCarousel } from "@/components/ImageCarousel";
+
+const mockImages = [
+  "/lovable-uploads/47353e1a-cd6b-4ccd-80e8-1758b4f4cbaf.png",
+  "/placeholder.svg",
+  "/placeholder.svg",
+];
 
 const Index = () => {
+  const [messages, setMessages] = useState([
+    {
+      content: "Welcome! How can I assist you today?",
+      type: "assistant" as const,
+    },
+  ]);
+
+  const handleSend = (message: string) => {
+    setMessages((prev) => [
+      ...prev,
+      { content: message, type: "user" as const },
+      {
+        content: "Thank you for your message. I'm here to help!",
+        type: "assistant" as const,
+      },
+    ]);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-gradient-to-br from-background to-accent">
+      <div className="container mx-auto max-w-4xl p-4">
+        <header className="text-center mb-8">
+          <h1 className="text-4xl font-bold mb-2">Virtual Assistant</h1>
+          <p className="text-muted-foreground">Your AI Shopping Companion</p>
+        </header>
+
+        <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 shadow-xl">
+          <div className="h-[60vh] overflow-y-auto p-4 space-y-4">
+            {messages.map((message, index) => (
+              <ChatMessage
+                key={index}
+                content={message.content}
+                type={message.type}
+              />
+            ))}
+          </div>
+
+          <div className="border-t border-white/10">
+            <ImageCarousel images={mockImages} />
+            <ChatInput onSend={handleSend} />
+          </div>
+        </div>
       </div>
     </div>
   );
