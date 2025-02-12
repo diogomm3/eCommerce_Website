@@ -10,21 +10,26 @@ const mockImages = [
   "/placeholder.svg",
 ];
 
+type MessageType = {
+  content: string;
+  type: "user" | "assistant";
+};
+
 const Index = () => {
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<MessageType[]>([
     {
       content: "Welcome! How can I assist you today?",
-      type: "assistant" as const,
+      type: "assistant",
     },
   ]);
 
   const handleSend = (message: string) => {
     setMessages((prev) => [
       ...prev,
-      { content: message, type: "user" as const },
+      { content: message, type: "user" },
       {
         content: "Thank you for your message. I'm here to help!",
-        type: "assistant" as const,
+        type: "assistant",
       },
     ]);
   };
