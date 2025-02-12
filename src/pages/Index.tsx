@@ -53,7 +53,8 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-red-600 text-white p-4">
-        <h1 className="text-xl font-bold text-center">Assistente Continente</h1>
+        <h1 className="text-xl font-bold text-center">CLARA - Continente Loyalty & Automated Response Agent</h1>
+        <p className="text-sm text-center mt-1">Continente On-line Agent</p>
       </div>
 
       <div className="container mx-auto max-w-4xl p-4">
