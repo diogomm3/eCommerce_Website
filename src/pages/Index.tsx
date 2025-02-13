@@ -32,7 +32,48 @@ const mockProducts: Product[] = [
     price: "1.89€",
     image: "/placeholder.svg"
   },
-  // Add more mock products as needed
+  {
+    id: 4,
+    name: "Arroz Cigala",
+    price: "1.29€",
+    image: "/placeholder.svg"
+  },
+  {
+    id: 5,
+    name: "Azeite Gallo",
+    price: "4.99€",
+    image: "/placeholder.svg"
+  },
+  {
+    id: 6,
+    name: "Pasta de Dentes Colgate",
+    price: "2.49€",
+    image: "/placeholder.svg"
+  },
+  {
+    id: 7,
+    name: "Batatas Fritas Lay's",
+    price: "1.79€",
+    image: "/placeholder.svg"
+  },
+  {
+    id: 8,
+    name: "Café Delta",
+    price: "3.99€",
+    image: "/placeholder.svg"
+  },
+  {
+    id: 9,
+    name: "Iogurte Danone",
+    price: "2.29€",
+    image: "/placeholder.svg"
+  },
+  {
+    id: 10,
+    name: "Chocolate Milka",
+    price: "1.99€",
+    image: "/placeholder.svg"
+  }
 ];
 
 const Index = () => {
