@@ -18,7 +18,7 @@ export const ChatInput = ({ onSend }: ChatInputProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 p-4">
+    <form onSubmit={handleSubmit} className="flex gap-2">
       <input
         type="text"
         value={message}

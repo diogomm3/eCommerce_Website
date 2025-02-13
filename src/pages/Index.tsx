@@ -75,12 +75,42 @@ const Index = () => {
             ))}
           </div>
 
+          {/* Chat input and actions */}
+          <div className="border-t border-gray-100">
+            <div className="flex items-center gap-2 p-4">
+              <div className="flex-1">
+                <ChatInput onSend={handleSend} />
+              </div>
+              <Link
+                to="/image-search"
+                className="p-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
+              >
+                <Camera className="w-5 h-5" />
+              </Link>
+              <Link
+                to="/cart"
+                className="p-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
+              >
+                <ShoppingCart className="w-5 h-5" />
+              </Link>
+              <button
+                className="p-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
+                onClick={() => {
+                  // Simulate product click
+                  console.log("Product click simulated");
+                }}
+              >
+                <MousePointer className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
           {/* Product carousel for suggested products */}
           <div className="border-t border-gray-100">
             <div className="p-4">
               <h2 className="text-lg font-semibold mb-4">Produtos Sugeridos</h2>
               <ImageCarousel
-                images={mockProducts.slice(0, 2).map((product) => ({
+                images={mockProducts.map((product) => ({
                   src: product.image,
                   alt: product.name,
                   description: product.name,
@@ -108,34 +138,6 @@ const Index = () => {
               title="Session Products (TIGER)"
               products={mockProducts}
             />
-          </div>
-
-          {/* Chat input and actions */}
-          <div className="border-t border-gray-100">
-            <div className="flex items-center gap-2 p-4">
-              <ChatInput onSend={handleSend} />
-              <Link
-                to="/image-search"
-                className="p-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
-              >
-                <Camera className="w-5 h-5" />
-              </Link>
-              <Link
-                to="/cart"
-                className="p-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
-              >
-                <ShoppingCart className="w-5 h-5" />
-              </Link>
-              <button
-                className="p-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
-                onClick={() => {
-                  // Simulate product click
-                  console.log("Product click simulated");
-                }}
-              >
-                <MousePointer className="w-5 h-5" />
-              </button>
-            </div>
           </div>
         </div>
       </div>
