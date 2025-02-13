@@ -15,12 +15,12 @@ export const ProductCarousel = ({ title, products, itemsPerView = 5 }: ProductCa
 
   const next = () => {
     setCurrentIndex((current) => 
-      Math.min(current + 1, products.length - itemsPerView)
+      Math.min(current + itemsPerView, products.length - itemsPerView)
     );
   };
 
   const previous = () => {
-    setCurrentIndex((current) => Math.max(current - 1, 0));
+    setCurrentIndex((current) => Math.max(current - itemsPerView, 0));
   };
 
   const visibleProducts = products.slice(
@@ -39,7 +39,7 @@ export const ProductCarousel = ({ title, products, itemsPerView = 5 }: ProductCa
           {visibleProducts.map((product) => (
             <div
               key={product.id}
-              className={`flex-none w-[calc(100%/${itemsPerView})] bg-white rounded-xl shadow-sm border p-4`}
+              className="flex-none w-[calc(100%/${itemsPerView})] bg-white rounded-xl shadow-sm border p-4"
             >
               <img
                 src={product.image}
