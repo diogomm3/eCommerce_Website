@@ -73,6 +73,18 @@ const Index = () => {
                 type={message.type}
               />
             ))}
+            {/* Product carousel for suggested products within chat */}
+            <div className="w-full message-bubble assistant">
+              <h2 className="text-lg font-semibold mb-4">Produtos Sugeridos</h2>
+              <ImageCarousel
+                images={mockProducts.map((product) => ({
+                  src: product.image,
+                  alt: product.name,
+                  description: product.name,
+                  price: product.price,
+                }))}
+              />
+            </div>
           </div>
 
           {/* Chat input and actions */}
@@ -105,38 +117,27 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Product carousel for suggested products */}
-          <div className="border-t border-gray-100">
-            <div className="p-4">
-              <h2 className="text-lg font-semibold mb-4">Produtos Sugeridos</h2>
-              <ImageCarousel
-                images={mockProducts.map((product) => ({
-                  src: product.image,
-                  alt: product.name,
-                  description: product.name,
-                  price: product.price,
-                }))}
-              />
-            </div>
-          </div>
-
           {/* Additional carousels */}
           <div className="border-t border-gray-100 p-4">
             <ProductCarousel
               title="Similar Products (GPT4Rec)"
               products={mockProducts}
+              itemsPerView={5}
             />
             <ProductCarousel
               title="Related Products (GPT4Rec)"
               products={mockProducts}
+              itemsPerView={5}
             />
             <ProductCarousel
               title="Session Products (GPT4Rec)"
               products={mockProducts}
+              itemsPerView={5}
             />
             <ProductCarousel
               title="Session Products (TIGER)"
               products={mockProducts}
+              itemsPerView={5}
             />
           </div>
         </div>
