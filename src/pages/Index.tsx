@@ -3,13 +3,17 @@ import { useState } from "react";
 import { ChatMessage } from "@/components/ChatMessage";
 import { ChatInput } from "@/components/ChatInput";
 import { ImageCarousel } from "@/components/ImageCarousel";
+import { ProductCarousel } from "@/components/ProductCarousel";
+import { Camera, ShoppingCart, MousePointer } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Product } from "@/types/product";
 
 type MessageType = {
   content: string;
   type: "user" | "assistant";
 };
 
-const mockProducts = [
+const mockProducts: Product[] = [
   {
     id: 1,
     name: "Água Luso",
@@ -27,7 +31,8 @@ const mockProducts = [
     name: "Pão de Forma",
     price: "1.89€",
     image: "/placeholder.svg"
-  }
+  },
+  // Add more mock products as needed
 ];
 
 const Index = () => {
@@ -70,12 +75,12 @@ const Index = () => {
             ))}
           </div>
 
-          {/* Product carousel */}
+          {/* Product carousel for suggested products */}
           <div className="border-t border-gray-100">
             <div className="p-4">
               <h2 className="text-lg font-semibold mb-4">Produtos Sugeridos</h2>
               <ImageCarousel
-                images={mockProducts.map((product) => ({
+                images={mockProducts.slice(0, 2).map((product) => ({
                   src: product.image,
                   alt: product.name,
                   description: product.name,
@@ -85,9 +90,52 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Chat input */}
+          {/* Additional carousels */}
+          <div className="border-t border-gray-100 p-4">
+            <ProductCarousel
+              title="Similar Products (GPT4Rec)"
+              products={mockProducts}
+            />
+            <ProductCarousel
+              title="Related Products (GPT4Rec)"
+              products={mockProducts}
+            />
+            <ProductCarousel
+              title="Session Products (GPT4Rec)"
+              products={mockProducts}
+            />
+            <ProductCarousel
+              title="Session Products (TIGER)"
+              products={mockProducts}
+            />
+          </div>
+
+          {/* Chat input and actions */}
           <div className="border-t border-gray-100">
-            <ChatInput onSend={handleSend} />
+            <div className="flex items-center gap-2 p-4">
+              <ChatInput onSend={handleSend} />
+              <Link
+                to="/image-search"
+                className="p-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
+              >
+                <Camera className="w-5 h-5" />
+              </Link>
+              <Link
+                to="/cart"
+                className="p-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
+              >
+                <ShoppingCart className="w-5 h-5" />
+              </Link>
+              <button
+                className="p-2 rounded-xl bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors"
+                onClick={() => {
+                  // Simulate product click
+                  console.log("Product click simulated");
+                }}
+              >
+                <MousePointer className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
